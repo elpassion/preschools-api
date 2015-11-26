@@ -59,7 +59,7 @@
                         <!-- You might have to remove the ./ in front   -->
                         <web>java -jar ./target/preschools-1.0-jar-with-dependencies.jar</web>
                         <migrate>java -cp target/preschools-1.0.jar:target/dependency/* flyway.Migrations</migrate>
-                        <import_warsaw>java -cp target/preschools-1.0-jar-with-dependencies.jar:target/dependency/* imports.warsaw.SchoolsFetcher</import_warsaw>
+                        <import_warsaw>java -cp target/preschools-1.0-jar-with-dependencies.jar:target/dependency/* imports.Warsaw</import_warsaw>
                     </processTypes>
                 </configuration>
             </plugin>
