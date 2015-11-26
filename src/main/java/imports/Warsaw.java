@@ -2,6 +2,8 @@ package imports;
 
 import imports.warsaw.SchoolsFetcher;
 import models.School;
+import services.SchoolsImporter;
+import services.SchoolsService;
 
 import java.util.List;
 
@@ -14,5 +16,7 @@ public class Warsaw {
 
         List<School> schools = fetcher.getSchools();
         new SchoolsImporter(schools).perform();
+
+        SchoolsService.updateGeolocationData();
     }
 }

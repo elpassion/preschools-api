@@ -6,7 +6,9 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.google.maps.model.LatLng;
 import models.School;
+import services.GeolocationService;
 
 /**
  * Created by aserafin on 26/11/15.
@@ -16,6 +18,7 @@ public class SchoolFormatter {
 
     public SchoolFormatter(LinkedHashMap<String, String> data) {
         this.data = data;
+
     }
 
     public School format() {

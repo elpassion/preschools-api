@@ -1,8 +1,6 @@
-package imports;
+package services;
 
 import models.School;
-import services.SchoolsRepository;
-
 import java.util.List;
 
 /**

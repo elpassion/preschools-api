@@ -17,6 +17,8 @@ public class School {
     private String email;
     private String phone;
     private String rspo;
+    private Double latitude;
+    private Double longitude;
 
     public String getName() {
         return name;
@@ -112,5 +114,25 @@ public class School {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String addressForGeolocation() {
+        return String.format("%s %s %s %s", getName(), getAddress(), getPostCode(), getCity());
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }
