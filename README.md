@@ -28,6 +28,12 @@ On heroku
 heroku run migrate
 ```
 
+### Fetching preschools from Warsaw
+
+```
+heroku run imports_warsaw
+```
+
 ### Origins
 This application was created during ElPassion's Hackathon on 26-27.11.2015
 
