@@ -6,7 +6,7 @@ api for preschools app
 * Java 1.8 or greater
 * Maven (`brew install maven` on OSX) 
 
-All configuration is stored in settings.sh
+All configuration is stored in `settings.sh`
 
 ### Deploy to heroku
 
