@@ -63,8 +63,16 @@ public class SchoolsFetcher {
     }
 
     private String buildUrl(Integer offset) {
-        String resource_id = "1cae4865-bb17-4944-a222-0d0cdc377951";
-        String filters = URLEncoder.encode("{\"Typ placówki\":\"Przedszkole\"}");
-        return String.format("%s?resource_id=%s&filters=%s&offset=%s", this.baseUrl, resource_id, filters, offset);
+        String encoding = "UTF-8";
+        try {
+            String resource_id = "1cae4865-bb17-4944-a222-0d0cdc377951";
+            String filters = URLEncoder.encode("{\"Typ placówki\":\"Przedszkole\"}", encoding);
+            return String.format("%s?resource_id=%s&filters=%s&offset=%s", this.baseUrl, resource_id, filters, offset);
+        } catch (java.io.UnsupportedEncodingException ex) {
+            System.out.println(String.format("Encoding unsupporter: %s", encoding));
+            ex.printStackTrace();
+        }
+
+        return null;
     }
 }
