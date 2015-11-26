@@ -14,7 +14,7 @@ public class SchoolsImporter {
     }
 
     public void perform() {
-        schools.parallelStream().forEach(school -> importSchool(school));
+        schools.stream().forEach(school -> importSchool(school));
     }
 
     private void importSchool(School school) {
