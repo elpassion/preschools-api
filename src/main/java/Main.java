@@ -15,8 +15,6 @@ public class Main {
             List<School> schools = SchoolsRepository.findAllForLocation();
             return schools;
         }, new SchoolsLocationViewJsonTransformer());
-
-        get("/hello", (req, res) -> "Hello World");
     }
 
     static int getHerokuAssignedPort() {
