@@ -24,6 +24,13 @@ public class SchoolsRepository {
         }
     }
 
+    public static List<School> findAll(String query) {
+        String sql = "select * from schools where name ilike :query or address ilike :query or city ilike :query or postCode ilike :query or post ilike :query";
+        try(Connection connection = Database.getConnection()) {
+            return connection.createQuery(sql, false).addParameter("query", "%" + query + "%").executeAndFetch(School.class);
+        }
+    }
+
     public static List<School> findAll() {
         String sql = "select * from schools";
         try(Connection connection = Database.getConnection()) {

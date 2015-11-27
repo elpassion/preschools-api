@@ -1,5 +1,4 @@
 import models.Comment;
-import models.Rate;
 import models.School;
 import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
@@ -24,6 +23,13 @@ public class Main {
             response.type("application/json; charset=utf-8");
 
             List<School> schools = SchoolsRepository.findAllForLocation();
+            return schools;
+        }, new SchoolsLocationViewJsonTransformer());
+
+        get("/schools/search", (request, response) -> {
+            response.type("application/json; charset=utf-8");
+
+            List<School> schools = SchoolsRepository.findAll(request.queryParams("query"));
             return schools;
         }, new SchoolsLocationViewJsonTransformer());
 
