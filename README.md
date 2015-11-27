@@ -11,7 +11,7 @@ All configuration is stored in `settings.sh`
 ### Endpoints
 
 * `GET  /schools/locations` - returns full list of schools with locations
-* `GET  /schools/rankings` - returns schools ordered by stars, params: `offset`, `limit`
+* `GET  /schools/ranking` - returns schools ordered by stars, params: `offset`, `limit`
 * `GET  /schools/search?query=tajem` - returns schools that match query, we search by name, street, post and post code
 * `GET  /schools/:id` - returns single school
 * `POST /schools/:id/comments` - creates comment for school, params: `nick`, `body`
