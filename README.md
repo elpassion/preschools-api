@@ -14,6 +14,7 @@ All configuration is stored in `settings.sh`
 * `GET  /schools/:id` - returns single school
 * `POST /schools/:id/comments` - creates comment for school, params: `nick`, `body`
 * `GET  /schools/:id/comments` - returns comments for given school, pagination enabled, params: `limit`, `offset`
+* `POST /schools/:id/ranks` - creates rank for school, params: `stars`
 
 ### Deploy to heroku
 
