@@ -18,12 +18,12 @@ public class SchoolsImporter {
     }
 
     private void importSchool(School school) {
-        School existingSchool = SchoolsRepository.findByRspo(school.getRspo());
+        School existingSchool = SchoolsRepository.findByRspo(school.rspo);
 
         if(existingSchool == null) {
             SchoolsRepository.insertSchool(school);
         } else {
-            school.setId(existingSchool.getId());
+            school.id = existingSchool.id;
             SchoolsRepository.updateSchool(school);
         }
     }

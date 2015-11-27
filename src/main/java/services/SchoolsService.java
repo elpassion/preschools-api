@@ -15,8 +15,8 @@ public class SchoolsService {
         schools.forEach(school -> {
             LatLng location = new GeolocationService(school.addressForGeolocation()).getCoordinates();
             if (location != null) {
-                school.setLongitude(location.lng);
-                school.setLatitude(location.lat);
+                school.longitude = location.lng;
+                school.latitude = location.lat;
 
                 SchoolsRepository.updateSchool(school);
             }

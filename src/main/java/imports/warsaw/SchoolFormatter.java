@@ -23,17 +23,17 @@ public class SchoolFormatter {
 
     public School format() {
         School school = new School();
-        school.setName(data.get("Nazwa placówki"));
-        school.setPostCode(data.get("Kod pocztowy"));
-        school.setCity(getCityOrPost());
-        school.setRegon(data.get("Regon"));
-        school.setEmail(data.get("E-mail"));
-        school.setPhone(data.get("Telefon"));
-        school.setRspo(data.get("\uFEFFNr RSPO"));
-        school.setPost(data.get("Poczta"));
-        school.setAddress(getAddress());
-        school.setSchoolType(getSchoolType());
-        school.setOwnershipType(getOwnershipType());
+        school.name = data.get("Nazwa placówki");
+        school.postCode = data.get("Kod pocztowy");
+        school.city = getCityOrPost();
+        school.regon = data.get("Regon");
+        school.email = data.get("E-mail");
+        school.phone = data.get("Telefon");
+        school.rspo = data.get("\uFEFFNr RSPO");
+        school.post = data.get("Poczta");
+        school.address = getAddress();
+        school.schoolType = getSchoolType();
+        school.ownershipType = getOwnershipType();
 
         return school;
     }

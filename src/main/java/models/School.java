@@ -1,138 +1,56 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import views.SchoolViews;
+
 /**
  * Created by aserafin on 26/11/15.
  */
 
 public class School {
-    private Integer id;
-    private String name;
-    private String address;
-    private String postCode;
-    private String post;
-    private String city;
-    private String regon;
-    private String schoolType;
-    private String ownershipType;
-    private String email;
-    private String phone;
-    private String rspo;
-    private Double latitude;
-    private Double longitude;
+    @JsonView(SchoolViews.Base.class)
+    public Integer id;
 
-    public String getName() {
-        return name;
-    }
+    @JsonView(SchoolViews.Base.class)
+    public String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String address;
 
-    public String getAddress() {
-        return address;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String postCode;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String post;
 
-    public String getPostCode() {
-        return postCode;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String city;
 
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String regon;
 
-    public String getCity() {
-        return city;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String schoolType;
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String ownershipType;
 
-    public String getRspo() {
-        return rspo;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String email;
 
-    public void setRspo(String rspo) {
-        this.rspo = rspo;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String phone;
 
-    public String getPhone() {
-        return phone;
-    }
+    @JsonView(SchoolViews.Full.class)
+    public String rspo;
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    @JsonView(SchoolViews.Location.class)
+    public Double latitude;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getOwnershipType() {
-        return ownershipType;
-    }
-
-    public void setOwnershipType(String ownershipType) {
-        this.ownershipType = ownershipType;
-    }
-
-    public String getSchoolType() {
-        return schoolType;
-    }
-
-    public void setSchoolType(String schoolType) {
-        this.schoolType = schoolType;
-    }
-
-    public String getRegon() {
-        return regon;
-    }
-
-    public void setRegon(String regon) {
-        this.regon = regon;
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @JsonView(SchoolViews.Location.class)
+    public Double longitude;
 
     public String addressForGeolocation() {
-        return String.format("%s %s %s %s", getName(), getAddress(), getPostCode(), getCity());
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+        return String.format("%s %s %s %s", name, address, postCode, city);
     }
 }

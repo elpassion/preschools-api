@@ -17,6 +17,6 @@ public class Warsaw {
         List<School> schools = fetcher.getSchools();
         new SchoolsImporter(schools).perform();
 
-        SchoolsService.updateGeolocationData();
+        //SchoolsService.updateGeolocationData();
     }
 }

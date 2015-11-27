@@ -24,6 +24,13 @@ public class SchoolsRepository {
         }
     }
 
+    public static List<School> findAllForLocation() {
+        String sql = "select id, name, latitude, longitude from schools where latitude is not null and longitude is not null";
+        try(Connection connection = Database.getConnection()) {
+            return connection.createQuery(sql, false).executeAndFetch(School.class);
+        }
+    }
+
     public static void insertSchool(School school) {
         String sql = "insert into schools(name, address, postCode, post, city, regon, schooltype, ownershiptype, email, " +
                      "phone, rspo, latitude, longitude)" +
@@ -31,7 +38,7 @@ public class SchoolsRepository {
                      ":phone, :rspo, :latitude, :longitude)";
 
         try(Connection connection = Database.getConnection()) {
-            school.setId((Integer)connection.createQuery(sql).bind(school).executeUpdate().getKey());
+            school.id = (Integer)connection.createQuery(sql).bind(school).executeUpdate().getKey();
         }
     }
 
