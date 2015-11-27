@@ -38,6 +38,14 @@ public class SchoolsRepository {
         }
     }
 
+    public static List<School> findAllForRanking(Integer offset, Integer limit) {
+        String sql = "select * from schools order by stars desc, id desc offset :offset limit :limit";
+        try(Connection connection = Database.getConnection()) {
+            return connection.createQuery(sql, false).addParameter("offset", offset).addParameter("limit", limit)
+                    .executeAndFetch(School.class);
+        }
+    }
+
     public static List<School> findAllForLocation() {
         String sql = "select id, name, latitude, longitude from schools where latitude is not null and longitude is not null";
         try(Connection connection = Database.getConnection()) {

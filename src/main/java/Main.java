@@ -22,9 +22,20 @@ public class Main {
         get("/schools/locations", (request, response) -> {
             response.type("application/json; charset=utf-8");
 
+
             List<School> schools = SchoolsRepository.findAllForLocation();
             return schools;
         }, new SchoolsLocationViewJsonTransformer());
+
+        get("/schools/ranking", (request, response) -> {
+            response.type("application/json; charset=utf-8");
+
+            Integer offset = request.params("offset") == null ? 0 : Integer.parseInt(request.params("offset"));
+            Integer limit = request.params("limit") == null ? 10 : Integer.parseInt(request.params("limit"));
+
+            List<School> schools = SchoolsRepository.findAllForRanking(offset, limit);
+            return schools;
+        }, new SchoolsFullViewJsonTransformer());
 
         get("/schools/search", (request, response) -> {
             response.type("application/json; charset=utf-8");
