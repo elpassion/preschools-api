@@ -16,6 +16,7 @@ import static spark.Spark.*;
 public class Main {
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
+        enableCORS("*", "*", "*");
 
         get("/schools/locations", (request, response) -> {
             response.type("application/json; charset=utf-8");
@@ -70,5 +71,13 @@ public class Main {
         MultiMap<String> params = new MultiMap<>();
         UrlEncoded.decodeTo(body, params, "UTF-8", -1);
         return params;
+    }
+
+    static void enableCORS(final String origin, final String methods, final String headers) {
+        before((request, response) -> {
+            response.header("Access-Control-Allow-Origin", origin);
+            response.header("Access-Control-Request-Method", methods);
+            response.header("Access-Control-Allow-Headers", headers);
+        });
     }
 }
