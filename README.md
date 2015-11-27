@@ -8,6 +8,14 @@ api for preschools app
 
 All configuration is stored in `settings.sh`
 
+### Endpoints
+
+* `GET  /schools/locations` - returns full list of schools with locations
+* `GET  /schools/:id` - returns single school
+* `POST /schools/:id/comments` - creates comment for school, params: `nick`, `body`
+* `GET  /schools/:id/comments` - returns comments for given school, pagination enabled, params: `limit`, `offset`
+
+
 ### Deploy to heroku
 
 ```
