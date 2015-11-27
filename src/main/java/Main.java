@@ -1,9 +1,11 @@
 import models.Comment;
+import models.Rate;
 import models.School;
 import org.eclipse.jetty.util.MultiMap;
 import org.eclipse.jetty.util.UrlEncoded;
 import services.CommentsRepository;
 import services.CommentsService;
+import services.RatesService;
 import services.SchoolsRepository;
 import transformers.JsonTransformer;
 import transformers.SchoolsFullViewJsonTransformer;
@@ -51,6 +53,19 @@ public class Main {
             Comment comment = CommentsService.createComment(schoolId, params.getString("nick"), params.getString("body"));
             return comment;
         }, new JsonTransformer());
+
+        post("/schools/:id/rates", "x-www-form-urlencoded", (request, response) -> {
+            response.type("application/json; charset=utf-8");
+
+            Integer schoolId = Integer.parseInt(request.params(":id"));
+            MultiMap<String> params = parseRequestBody(request.body());
+            Integer stars = params.getString("stars") == null ? 0 : Integer.parseInt(params.getString("stars")) % 11;
+
+            RatesService.createRate(schoolId, stars, request.ip());
+            School school = SchoolsRepository.findById(schoolId);
+
+            return school;
+        }, new SchoolsFullViewJsonTransformer());
 
         exception(NumberFormatException.class, (e, request, response) -> {
             response.status(400);

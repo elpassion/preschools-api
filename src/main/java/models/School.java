@@ -50,6 +50,9 @@ public class School {
     @JsonView(SchoolViews.Location.class)
     public Double longitude;
 
+    @JsonView(SchoolViews.Full.class)
+    public Double stars;
+
     public String addressForGeolocation() {
         return String.format("%s %s %s %s", name, address, postCode, city);
     }

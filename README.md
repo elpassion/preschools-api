@@ -15,7 +15,6 @@ All configuration is stored in `settings.sh`
 * `POST /schools/:id/comments` - creates comment for school, params: `nick`, `body`
 * `GET  /schools/:id/comments` - returns comments for given school, pagination enabled, params: `limit`, `offset`
 
-
 ### Deploy to heroku
 
 ```
