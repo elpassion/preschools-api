@@ -3,7 +3,7 @@ CREATE TABLE comments (
     schoolId integer NOT NULL,
     nick varchar NOT NULL,
     body varchar NOT NULL,
-    created_at timestamp with time zone NOT NULL,
+    createdAt timestamp with time zone NOT NULL,
     PRIMARY KEY(id)
 );
 
