@@ -17,6 +17,13 @@ public class SchoolsRepository {
         }
     }
 
+    public static School findById(Integer id) {
+        String sql = "select * from schools where id = :id";
+        try(Connection connection = Database.getConnection()) {
+            return connection.createQuery(sql, false).addParameter("id", id).executeAndFetchFirst(School.class);
+        }
+    }
+
     public static List<School> findAll() {
         String sql = "select * from schools";
         try(Connection connection = Database.getConnection()) {
