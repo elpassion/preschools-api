@@ -44,10 +44,11 @@ public class Main {
             return schools;
         }, new SchoolsLocationViewJsonTransformer());
 
-        get("/schools/:id", (request, ressponse) -> {
-            ressponse.type("application/json; charset=utf-8");
+        get("/schools/:id", (request, response) -> {
+            response.type("application/json; charset=utf-8");
 
             School school = SchoolsRepository.findById(Integer.parseInt(request.params(":id")));
+            if (school == null) response.status(404);
             return school;
         }, new SchoolsFullViewJsonTransformer());
 
