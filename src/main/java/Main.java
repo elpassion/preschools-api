@@ -30,8 +30,8 @@ public class Main {
         get("/schools/ranking", (request, response) -> {
             response.type("application/json; charset=utf-8");
 
-            Integer offset = request.params("offset") == null ? 0 : Integer.parseInt(request.params("offset"));
-            Integer limit = request.params("limit") == null ? 10 : Integer.parseInt(request.params("limit"));
+            Integer offset = request.queryParams("offset") == null ? 0 : Integer.parseInt(request.queryParams("offset"));
+            Integer limit = request.queryParams("limit") == null ? 10 : Integer.parseInt(request.queryParams("limit"));
 
             List<School> schools = SchoolsRepository.findAllForRanking(offset, limit);
             return schools;
@@ -56,8 +56,8 @@ public class Main {
             response.type("application/json; charset=utf-8");
 
             Integer schoolId = Integer.parseInt(request.params("id"));
-            Integer offset = request.params("offset") == null ? 0 : Integer.parseInt(request.params("offset"));
-            Integer limit = request.params("limit") == null ? 10 : Integer.parseInt(request.params("limit"));
+            Integer offset = request.queryParams("offset") == null ? 0 : Integer.parseInt(request.queryParams("offset"));
+            Integer limit = request.queryParams("limit") == null ? 10 : Integer.parseInt(request.queryParams("limit"));
 
             List<Comment> comments = CommentsRepository.findForSchoolId(schoolId, offset, limit);
             return comments;
